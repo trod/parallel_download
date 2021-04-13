@@ -1,0 +1,29 @@
+defmodule PD.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :pd,
+      version: "0.0.1",
+      elixir: "~> 1.11",
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
+  end
+
+  # Run "mix help compile.app" to learn about applications.
+  def application do
+    [
+      extra_applications: [:logger],
+      mod: {PD.Application, []}
+    ]
+  end
+
+  defp deps do
+    [
+      {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false},
+      {:finch, "~> 0.6"},
+      {:mock, "~> 0.3.0", only: :test},
+    ]
+  end
+end
